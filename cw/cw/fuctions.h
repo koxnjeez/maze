@@ -1,32 +1,32 @@
-// enumeration - перечисление
+// enumeration - РїРµСЂРµС‡РёСЃР»РµРЅРёРµ
 enum Derections { LEFT = 75, RIGHT = 77, DOWN = 80, UP = 72 };
 enum colors { BLACK = 0, GRAY = 8, YELLOW = 14, RED = 12, PINK = 13, GREEN = 2, PURPLE = 5 };
 enum elems { HALL = 0, WALL = 1, COIN = 2, ENEMY = 3, MEDICINE_KIT = 4 };
 
-HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE); //уникальный номер окна консоли (дескриптор)
+HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE); //СѓРЅРёРєР°Р»СЊРЅС‹Р№ РЅРѕРјРµСЂ РѕРєРЅР° РєРѕРЅСЃРѕР»Рё (РґРµСЃРєСЂРёРїС‚РѕСЂ)
 
 void SetCursor(int x, int y, int color, string text)
 {
     COORD position;
-    position.X = x; // настройка координат
+    position.X = x; // РЅР°СЃС‚СЂРѕР№РєР° РєРѕРѕСЂРґРёРЅР°С‚
     position.Y = y;
-    SetConsoleCursorPosition(h, position); // установка курсора в координату
-	SetConsoleTextAttribute(h, color); // установка цвета
-	cout << text; // вывод строки текста
+    SetConsoleCursorPosition(h, position); // СѓСЃС‚Р°РЅРѕРІРєР° РєСѓСЂСЃРѕСЂР° РІ РєРѕРѕСЂРґРёРЅР°С‚Сѓ
+	SetConsoleTextAttribute(h, color); // СѓСЃС‚Р°РЅРѕРІРєР° С†РІРµС‚Р°
+	cout << text; // РІС‹РІРѕРґ СЃС‚СЂРѕРєРё С‚РµРєСЃС‚Р°
 }
 
 void SetCursorChar(int x, int y, int color, char text)
 {
     COORD position;
-    position.X = x; // настройка координат
+    position.X = x; // РЅР°СЃС‚СЂРѕР№РєР° РєРѕРѕСЂРґРёРЅР°С‚
     position.Y = y;
-    SetConsoleCursorPosition(h, position); // установка курсора в координату
-	SetConsoleTextAttribute(h, color); // установка цвета
-	cout << text; // вывод строки текста
+    SetConsoleCursorPosition(h, position); // СѓСЃС‚Р°РЅРѕРІРєР° РєСѓСЂСЃРѕСЂР° РІ РєРѕРѕСЂРґРёРЅР°С‚Сѓ
+	SetConsoleTextAttribute(h, color); // СѓСЃС‚Р°РЅРѕРІРєР° С†РІРµС‚Р°
+	cout << text; // РІС‹РІРѕРґ СЃС‚СЂРѕРєРё С‚РµРєСЃС‚Р°
 }
 
 void HideCursor(bool vision, int size) {
-	// скрываем мигающий курсор в консоли
+	// СЃРєСЂС‹РІР°РµРј РјРёРіР°СЋС‰РёР№ РєСѓСЂСЃРѕСЂ РІ РєРѕРЅСЃРѕР»Рё
 	CONSOLE_CURSOR_INFO info;
 	info.bVisible = false;
 	info.dwSize = 100;
@@ -52,7 +52,7 @@ void PEndProgram() {
 		SetCursorChar(1, i, GRAY, (char)186);
 	}
 	SetCursor(55, 14, RED, "The end...");
-	Sleep(INFINITE); // пауза до того момента пока пользователь не закроет программу
+	Sleep(INFINITE); // РїР°СѓР·Р° РґРѕ С‚РѕРіРѕ РјРѕРјРµРЅС‚Р° РїРѕРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ Р·Р°РєСЂРѕРµС‚ РїСЂРѕРіСЂР°РјРјСѓ
 }
 
 void PStartProgram() {
@@ -74,19 +74,7 @@ void PStartProgram() {
 		SetCursorChar(1, i, GRAY, (char)186);
 	}
 	SetCursor(55, 14, GREEN, "You win!!!");
-	Sleep(INFINITE); // пауза до того момента пока пользователь не закроет программу
-}
-
-void EndProgram(bool fail) {
-	system("cls"); // очистка экрана
-	if (fail == false) {
-
-		PStartProgram(); // main() - перезапуск приложения
-	}
-	else {
-		PEndProgram();
-	}
-	Sleep(INFINITE); // пауза до того момента пока пользователь не закроет программу
+	Sleep(INFINITE); // РїР°СѓР·Р° РґРѕ С‚РѕРіРѕ РјРѕРјРµРЅС‚Р° РїРѕРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ Р·Р°РєСЂРѕРµС‚ РїСЂРѕРіСЂР°РјРјСѓ
 }
 
 void dyn_walls(int x, int y, int width, int height, int** arr, int elem) {
@@ -192,52 +180,52 @@ void main_menu(bool& dyn, bool& stat) {
 #pragma comment(lib, "winmm.lib")
 DWORD WINAPI HitSound(void* param)
 {
-	PlaySoundA("C:\\Users\\User\\Desktop\\Code\\cw\\sounds\\minecraft_hit_sound.wav", NULL, SND_NODEFAULT | SND_LOOP); // в "" путь к музыке
+	PlaySoundA("C:\\Users\\User\\Desktop\\Code\\cw\\sounds\\minecraft_hit_sound.wav", NULL, SND_NODEFAULT | SND_LOOP); // РІ "" РїСѓС‚СЊ Рє РјСѓР·С‹РєРµ
 	return 0;
 }
 
 DWORD WINAPI DeathSound(void* param)
 {
-	PlaySoundA("C:\\Users\\User\\Desktop\\Code\\cw\\sounds\\minecraft_death.wav", NULL, SND_NODEFAULT | SND_LOOP); // в "" путь к музыке
+	PlaySoundA("C:\\Users\\User\\Desktop\\Code\\cw\\sounds\\minecraft_death.wav", NULL, SND_NODEFAULT | SND_LOOP); // РІ "" РїСѓС‚СЊ Рє РјСѓР·С‹РєРµ
 	return 0;
 }
 
 DWORD WINAPI PickCoinSound(void* param)
 {
-	PlaySoundA("C:\\Users\\User\\Desktop\\Code\\cw\\sounds\\minecraft_pick_u.wav", NULL, SND_NODEFAULT | SND_LOOP); // в "" путь к музыке
+	PlaySoundA("C:\\Users\\User\\Desktop\\Code\\cw\\sounds\\minecraft_pick_u.wav", NULL, SND_NODEFAULT | SND_LOOP); // РІ "" РїСѓС‚СЊ Рє РјСѓР·С‹РєРµ
 	return 0;
 }
 
 DWORD WINAPI UseKitSound(void* param)
 {
-	PlaySoundA("C:\\Users\\User\\Desktop\\Code\\cw\\sounds\\medshot4.wav", NULL, SND_NODEFAULT | SND_LOOP); // в "" путь к музыке
+	PlaySoundA("C:\\Users\\User\\Desktop\\Code\\cw\\sounds\\medshot4.wav", NULL, SND_NODEFAULT | SND_LOOP); // РІ "" РїСѓС‚СЊ Рє РјСѓР·С‹РєРµ
 	return 0;
 }
 
 void StaticMaze() {
-	system("title Maze"); // меняем название файла в консоли
-	HideCursor(false, 100); // скрываем мигающий курсор в консоли
+	system("title Maze"); // РјРµРЅСЏРµРј РЅР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р° РІ РєРѕРЅСЃРѕР»Рё
+	HideCursor(false, 100); // СЃРєСЂС‹РІР°РµРј РјРёРіР°СЋС‰РёР№ РєСѓСЂСЃРѕСЂ РІ РєРѕРЅСЃРѕР»Рё
 	srand(time(0));
 
 	const int width = 60, height = 20;
 	int maze[height][width] = {};
 
-	// коридоры - 0     стены - 1     монетки - 2     враги - 3     аптечки - 4
+	// РєРѕСЂРёРґРѕСЂС‹ - 0     СЃС‚РµРЅС‹ - 1     РјРѕРЅРµС‚РєРё - 2     РІСЂР°РіРё - 3     Р°РїС‚РµС‡РєРё - 4
 
 	///////////////////////////////////////////////////////////////////////
-	// установка лабиринта
+	// СѓСЃС‚Р°РЅРѕРІРєР° Р»Р°Р±РёСЂРёРЅС‚Р°
 
 	for (int y = 0; y < height; y++) {
 		for (int x = 0; x < width; x++) {
 			maze[y][x] = rand() % 5;
 
-			walls(x, y, width, height, maze, WALL); // установка стен
+			walls(x, y, width, height, maze, WALL); // СѓСЃС‚Р°РЅРѕРІРєР° СЃС‚РµРЅ
 
-			entry_exit(x, y, width, height, maze, HALL); // определение точки входа и выхода
+			entry_exit(x, y, width, height, maze, HALL); // РѕРїСЂРµРґРµР»РµРЅРёРµ С‚РѕС‡РєРё РІС…РѕРґР° Рё РІС‹С…РѕРґР°
 
-			check(x, y, maze, ENEMY, HALL, 10); // уменьшение вероятности появления врага (10%)
+			check(x, y, maze, ENEMY, HALL, 10); // СѓРјРµРЅСЊС€РµРЅРёРµ РІРµСЂРѕСЏС‚РЅРѕСЃС‚Рё РїРѕСЏРІР»РµРЅРёСЏ РІСЂР°РіР° (10%)
 
-			check(x, y, maze, MEDICINE_KIT, HALL, 20); // уменьшение вероятности появления автечки (5%)
+			check(x, y, maze, MEDICINE_KIT, HALL, 20); // СѓРјРµРЅСЊС€РµРЅРёРµ РІРµСЂРѕСЏС‚РЅРѕСЃС‚Рё РїРѕСЏРІР»РµРЅРёСЏ Р°РІС‚РµС‡РєРё (5%)
 
 			if (maze[y][x] == HALL) {
 				SetCursor(x, y, BLACK, " ");
@@ -258,27 +246,26 @@ void StaticMaze() {
 				cout << maze[y][x];
 			}
 		}
-		cout << endl;
+		cout << "\n";
 	}
 
 	///////////////////////////////////////////////////////////////////////
-	// управление персонажем
+	// СѓРїСЂР°РІР»РµРЅРёРµ РїРµСЂСЃРѕРЅР°Р¶РµРј
 
-	// установка курсора в любую координату консоли
+	// СѓСЃС‚Р°РЅРѕРІРєР° РєСѓСЂСЃРѕСЂР° РІ Р»СЋР±СѓСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ РєРѕРЅСЃРѕР»Рё
 	COORD position;
 	position.X = 0;
 	position.Y = 2;
 	SetCursorChar(0, 2, PINK, (char)1);
 
-	int coins = 0; // количество подобраных монет
-	int health = 100; // здоровье
-	bool lose = false; // индикатор проигрыша
-	bool write = false; // показатель прошлого шага (нужно ли вернуть аптечку или нет)
+	int coins = 0; // РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕРґРѕР±СЂР°РЅС‹С… РјРѕРЅРµС‚
+	int health = 100; // Р·РґРѕСЂРѕРІСЊРµ
+	bool write = false; // РїРѕРєР°Р·Р°С‚РµР»СЊ РїСЂРѕС€Р»РѕРіРѕ С€Р°РіР° (РЅСѓР¶РЅРѕ Р»Рё РІРµСЂРЅСѓС‚СЊ Р°РїС‚РµС‡РєСѓ РёР»Рё РЅРµС‚)
 
 	while (true) {
 		if (_kbhit()) {
 			///////////////////////////////////////////////////////////////////////
-			// условие перезапуска
+			// СѓСЃР»РѕРІРёРµ РїРµСЂРµР·Р°РїСѓСЃРєР°
 
 			COORD reset_info;
 			reset_info.X = width + 1;
@@ -286,7 +273,7 @@ void StaticMaze() {
 			SetCursor(reset_info.X, reset_info.Y, YELLOW, "RESET GAME - \"R\"");
 
 			///////////////////////////////////////////////////////////////////////
-			// условие выхода 
+			// СѓСЃР»РѕРІРёРµ РІС‹С…РѕРґР° 
 
 			COORD exit_info;
 			exit_info.X = width + 1;
@@ -294,7 +281,7 @@ void StaticMaze() {
 			SetCursor(exit_info.X, exit_info.Y, YELLOW, "STOP GAME - \"P\"");
 
 			///////////////////////////////////////////////////////////////////////
-			// показатель здоровья
+			// РїРѕРєР°Р·Р°С‚РµР»СЊ Р·РґРѕСЂРѕРІСЊСЏ
 
 			COORD health_info;
 			health_info.X = width + 1;
@@ -303,18 +290,18 @@ void StaticMaze() {
 			cout << health << "%";
 
 			///////////////////////////////////////////////////////////////////////
-			// передвижение
+			// РїРµСЂРµРґРІРёР¶РµРЅРёРµ
 
-			int code = _getch(); // get character - получение кода нажатой клавиши
-			if (code == 224) // если была нажата стрелочка
+			int code = _getch(); // get character - РїРѕР»СѓС‡РµРЅРёРµ РєРѕРґР° РЅР°Р¶Р°С‚РѕР№ РєР»Р°РІРёС€Рё
+			if (code == 224) // РµСЃР»Рё Р±С‹Р»Р° РЅР°Р¶Р°С‚Р° СЃС‚СЂРµР»РѕС‡РєР°
 			{
 				code = _getch();
 			}
-			else if (code == 112) // если пользователь захотел завершить программу
+			else if (code == 112) // РµСЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°С…РѕС‚РµР» Р·Р°РІРµСЂС€РёС‚СЊ РїСЂРѕРіСЂР°РјРјСѓ
 			{
 				PEndProgram();
 			}
-			else if (code == 114) // если пользователь захотел перезапустить программу
+			else if (code == 114) // РµСЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°С…РѕС‚РµР» РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ РїСЂРѕРіСЂР°РјРјСѓ
 			{
 				system("cls");
 				StaticMaze();
@@ -322,35 +309,35 @@ void StaticMaze() {
 
 			SetCursor(position.X, position.Y, BLACK, " ");
 
-			COORD kit_pos; // создание пустых координат аптечки
+			COORD kit_pos; // СЃРѕР·РґР°РЅРёРµ РїСѓСЃС‚С‹С… РєРѕРѕСЂРґРёРЅР°С‚ Р°РїС‚РµС‡РєРё
 			kit_pos.X = 0;
 			kit_pos.Y = 0;
-			if (write) // 2 этап процесса возврата аптечки
+			if (write) // 2 СЌС‚Р°Рї РїСЂРѕС†РµСЃСЃР° РІРѕР·РІСЂР°С‚Р° Р°РїС‚РµС‡РєРё
 			{
-				kit_pos.X = position.X; // записывание координат аптечки (до шага)
+				kit_pos.X = position.X; // Р·Р°РїРёСЃС‹РІР°РЅРёРµ РєРѕРѕСЂРґРёРЅР°С‚ Р°РїС‚РµС‡РєРё (РґРѕ С€Р°РіР°)
 				kit_pos.Y = position.Y;
-				write = false; // обнуление переменной после записи координат
+				write = false; // РѕР±РЅСѓР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ РїРѕСЃР»Рµ Р·Р°РїРёСЃРё РєРѕРѕСЂРґРёРЅР°С‚
 			}
 
 			if (code == RIGHT && maze[position.Y][position.X + 1] != WALL) {
-				position.X++; // смещение вправо
+				position.X++; // СЃРјРµС‰РµРЅРёРµ РІРїСЂР°РІРѕ
 			}
 			else if (code == LEFT && maze[position.Y][position.X - 1] != WALL) {
-				position.X--; // смещение влево
+				position.X--; // СЃРјРµС‰РµРЅРёРµ РІР»РµРІРѕ
 			}
 			else if (code == UP && maze[position.Y - 1][position.X] != WALL) {
-				position.Y--; // смещение вверх
+				position.Y--; // СЃРјРµС‰РµРЅРёРµ РІРІРµСЂС…
 			}
 			else if (code == DOWN && maze[position.Y + 1][position.X] != WALL) {
-				position.Y++; // смещение вниз
+				position.Y++; // СЃРјРµС‰РµРЅРёРµ РІРЅРёР·
 			}
 
-			if (kit_pos.X > 0) // если доступны координаты аптечки, возвращаем ее на место (3 этап процесса возврата аптечки)
+			if (kit_pos.X > 0) // РµСЃР»Рё РґРѕСЃС‚СѓРїРЅС‹ РєРѕРѕСЂРґРёРЅР°С‚С‹ Р°РїС‚РµС‡РєРё, РІРѕР·РІСЂР°С‰Р°РµРј РµРµ РЅР° РјРµСЃС‚Рѕ (3 СЌС‚Р°Рї РїСЂРѕС†РµСЃСЃР° РІРѕР·РІСЂР°С‚Р° Р°РїС‚РµС‡РєРё)
 			{
 				SetCursor(kit_pos.X, kit_pos.Y, GREEN, "+");
 			}
 
-			if (maze[position.Y][position.X] == ENEMY) // проверка наличия врага
+			if (maze[position.Y][position.X] == ENEMY) // РїСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ РІСЂР°РіР°
 			{
 				health -= 25;
 				if (health != 0) {
@@ -361,19 +348,18 @@ void StaticMaze() {
 				SetCursor(health_info.X, health_info.Y, YELLOW, " ");
 				if (health == 0) {
 					CreateThread(0, 0, DeathSound, 0, 0, 0);
-					lose = true;
-					MessageBoxA(0, "Закончилось здоровье!", "Поражение :(", MB_OK);
+					MessageBoxA(0, "Р—Р°РєРѕРЅС‡РёР»РѕСЃСЊ Р·РґРѕСЂРѕРІСЊРµ!", "РџРѕСЂР°Р¶РµРЅРёРµ :(", MB_OK);
 					PEndProgram();
 				}
 			}
 
-			if (maze[position.Y][position.X] == MEDICINE_KIT && health != 100) // использование аптечки
+			if (maze[position.Y][position.X] == MEDICINE_KIT && health != 100) // РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ Р°РїС‚РµС‡РєРё
 			{
 				health += 25;
 				CreateThread(0, 0, UseKitSound, 0, 0, 0);
 				maze[position.Y][position.X] = HALL;
 			}
-			else if (maze[position.Y][position.X] == MEDICINE_KIT && health == 100) // 1 этап процесса возврата аптечки
+			else if (maze[position.Y][position.X] == MEDICINE_KIT && health == 100) // 1 СЌС‚Р°Рї РїСЂРѕС†РµСЃСЃР° РІРѕР·РІСЂР°С‚Р° Р°РїС‚РµС‡РєРё
 			{
 				write = true;
 			}
@@ -381,15 +367,15 @@ void StaticMaze() {
 			SetCursorChar(position.X, position.Y, PINK, (char)1);
 
 			///////////////////////////////////////////////////////////////////////
-			// проверка на выход из лабиринта
+			// РїСЂРѕРІРµСЂРєР° РЅР° РІС‹С…РѕРґ РёР· Р»Р°Р±РёСЂРёРЅС‚Р°
 
 			if (position.X == width - 1 && position.Y == height - 3) {
-				MessageBoxA(0, "Найден выход из лабиринта!", "ПОБЕДА!", MB_OK);
-				break;
+				MessageBoxA(0, "РќР°Р№РґРµРЅ РІС‹С…РѕРґ РёР· Р»Р°Р±РёСЂРёРЅС‚Р°!", "РџРћР‘Р•Р”Рђ!", MB_OK);
+				PStartProgram();
 			}
 
 			///////////////////////////////////////////////////////////////////////
-			// проверка на подбор монетки
+			// РїСЂРѕРІРµСЂРєР° РЅР° РїРѕРґР±РѕСЂ РјРѕРЅРµС‚РєРё
 
 			if (maze[position.Y][position.X] == COIN) {
 				coins++;
@@ -417,7 +403,7 @@ void StaticMaze() {
 					}
 				}
 			}
-			//ПЕРЕДВИЖЕНИЕ ВРАГОВ
+			//РџР•Р Р•Р”Р’РР–Р•РќРР• Р’Р РђР“РћР’
 			for (int i = 0; i < enemy_count; i++)
 			{
 				int r = rand() % 100;
@@ -501,20 +487,33 @@ void StaticMaze() {
 	}
 	delete[] maze;
 	
-	EndProgram(lose);
+	PStartProgram();
 }
 
 void DynamicMaze() {
-	system("title Maze"); // меняем название файла в консоли
-	HideCursor(false, 100); // скрываем мигающий курсор в консоли
+	system("title Maze"); // РјРµРЅСЏРµРј РЅР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р° РІ РєРѕРЅСЃРѕР»Рё
+	HideCursor(false, 100); // СЃРєСЂС‹РІР°РµРј РјРёРіР°СЋС‰РёР№ РєСѓСЂСЃРѕСЂ РІ РєРѕРЅСЃРѕР»Рё
 	srand(time(0));
 
 	unsigned int width;
 	unsigned int height;
-	SetCursor(2, 1, YELLOW, "Please, enter amount of columns: ");
-	cin >> width;
-	SetCursor(2, 3, YELLOW, "Please, enter amount of rows: ");
-	cin >> height;
+	unsigned int tries_counter = 0;
+	while (true) {
+		SetCursor(40, 1, GRAY, "5-30 cells");
+		SetCursor(2, 2, YELLOW, "Please, enter the size of maze: ");
+		cin >> height;
+		if (height >= 5 && height <= 30) {
+			width = height * 2;
+			break;
+		}
+		else {
+			tries_counter++;
+			if (tries_counter > 0) {
+				MessageBoxA(0, "Required the value between 5 and 30", "AGAIN!", MB_OK);
+			}
+			system("cls");
+		}
+	}
 
 	int** maze = new int* [width];
 	for (int y = 0; y < width; y++) {
@@ -523,22 +522,22 @@ void DynamicMaze() {
 
 	system("cls");
 
-	// коридоры - 0     стены - 1     монетки - 2     враги - 3     аптечки - 4
+	// РєРѕСЂРёРґРѕСЂС‹ - 0     СЃС‚РµРЅС‹ - 1     РјРѕРЅРµС‚РєРё - 2     РІСЂР°РіРё - 3     Р°РїС‚РµС‡РєРё - 4
 
 	///////////////////////////////////////////////////////////////////////
-	// установка лабиринта
+	// СѓСЃС‚Р°РЅРѕРІРєР° Р»Р°Р±РёСЂРёРЅС‚Р°
 
 	for (int y = 0; y < height; y++) {
 		for (int x = 0; x < width; x++) {
 			maze[y][x] = rand() % 5;
 
-			dyn_walls(x, y, width, height, maze, WALL); // установка стен
+			dyn_walls(x, y, width, height, maze, WALL); // СѓСЃС‚Р°РЅРѕРІРєР° СЃС‚РµРЅ
 
-			dyn_entry_exit(x, y, width, height, maze, HALL); // определение точки входа и выхода
+			dyn_entry_exit(x, y, width, height, maze, HALL); // РѕРїСЂРµРґРµР»РµРЅРёРµ С‚РѕС‡РєРё РІС…РѕРґР° Рё РІС‹С…РѕРґР°
 
-			dyn_check(x, y, maze, ENEMY, HALL, 10); // уменьшение вероятности появления врага (10%)
+			dyn_check(x, y, maze, ENEMY, HALL, 10); // СѓРјРµРЅСЊС€РµРЅРёРµ РІРµСЂРѕСЏС‚РЅРѕСЃС‚Рё РїРѕСЏРІР»РµРЅРёСЏ РІСЂР°РіР° (10%)
 
-			dyn_check(x, y, maze, MEDICINE_KIT, HALL, 20); // уменьшение вероятности появления автечки (5%)
+			dyn_check(x, y, maze, MEDICINE_KIT, HALL, 20); // СѓРјРµРЅСЊС€РµРЅРёРµ РІРµСЂРѕСЏС‚РЅРѕСЃС‚Рё РїРѕСЏРІР»РµРЅРёСЏ Р°РІС‚РµС‡РєРё (5%)
 
 			if (maze[y][x] == HALL) {
 				SetCursor(x, y, BLACK, " ");
@@ -559,27 +558,26 @@ void DynamicMaze() {
 				cout << maze[y][x];
 			}
 		}
-		cout << endl;
+		cout << "\n";
 	}
 
 	///////////////////////////////////////////////////////////////////////
-	// управление персонажем
+	// СѓРїСЂР°РІР»РµРЅРёРµ РїРµСЂСЃРѕРЅР°Р¶РµРј
 
-	// установка курсора в любую координату консоли
+	// СѓСЃС‚Р°РЅРѕРІРєР° РєСѓСЂСЃРѕСЂР° РІ Р»СЋР±СѓСЋ РєРѕРѕСЂРґРёРЅР°С‚Сѓ РєРѕРЅСЃРѕР»Рё
 	COORD position;
 	position.X = 0;
 	position.Y = 2;
 	SetCursorChar(0, 2, PINK, (char)1);
 
-	int coins = 0; // количество подобраных монет
-	int health = 100; // здоровье
-	bool lose = false; // индикатор проигрыша
-	bool write = false; // показатель прошлого шага (нужно ли вернуть аптечку или нет)
+	int coins = 0; // РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕРґРѕР±СЂР°РЅС‹С… РјРѕРЅРµС‚
+	int health = 100; // Р·РґРѕСЂРѕРІСЊРµ
+	bool write = false; // РїРѕРєР°Р·Р°С‚РµР»СЊ РїСЂРѕС€Р»РѕРіРѕ С€Р°РіР° (РЅСѓР¶РЅРѕ Р»Рё РІРµСЂРЅСѓС‚СЊ Р°РїС‚РµС‡РєСѓ РёР»Рё РЅРµС‚)
 
 	while (true) {
 		if (_kbhit()) {
 			///////////////////////////////////////////////////////////////////////
-			// условие перезапуска
+			// СѓСЃР»РѕРІРёРµ РїРµСЂРµР·Р°РїСѓСЃРєР°
 
 			COORD reset_info;
 			reset_info.X = width + 1;
@@ -587,7 +585,7 @@ void DynamicMaze() {
 			SetCursor(reset_info.X, reset_info.Y, YELLOW, "RESET GAME - \"R\"");
 
 			///////////////////////////////////////////////////////////////////////
-			// условие выхода 
+			// СѓСЃР»РѕРІРёРµ РІС‹С…РѕРґР° 
 
 			COORD exit_info;
 			exit_info.X = width + 1;
@@ -595,7 +593,7 @@ void DynamicMaze() {
 			SetCursor(exit_info.X, exit_info.Y, YELLOW, "STOP GAME - \"P\"");
 
 			///////////////////////////////////////////////////////////////////////
-			// показатель здоровья
+			// РїРѕРєР°Р·Р°С‚РµР»СЊ Р·РґРѕСЂРѕРІСЊСЏ
 
 			COORD health_info;
 			health_info.X = width + 1;
@@ -604,18 +602,18 @@ void DynamicMaze() {
 			cout << health << "%";
 
 			///////////////////////////////////////////////////////////////////////
-			// передвижение
+			// РїРµСЂРµРґРІРёР¶РµРЅРёРµ
 
-			int code = _getch(); // get character - получение кода нажатой клавиши
-			if (code == 224) // если была нажата стрелочка
+			int code = _getch(); // get character - РїРѕР»СѓС‡РµРЅРёРµ РєРѕРґР° РЅР°Р¶Р°С‚РѕР№ РєР»Р°РІРёС€Рё
+			if (code == 224) // РµСЃР»Рё Р±С‹Р»Р° РЅР°Р¶Р°С‚Р° СЃС‚СЂРµР»РѕС‡РєР°
 			{
 				code = _getch();
 			}
-			else if (code == 112) // если пользователь захотел завершить программу
+			else if (code == 112) // РµСЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°С…РѕС‚РµР» Р·Р°РІРµСЂС€РёС‚СЊ РїСЂРѕРіСЂР°РјРјСѓ
 			{
 				PEndProgram();
 			}
-			else if (code == 114) // если пользователь захотел перезапустить программу
+			else if (code == 114) // РµСЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°С…РѕС‚РµР» РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ РїСЂРѕРіСЂР°РјРјСѓ
 			{
 				system("cls");
 				DynamicMaze();
@@ -623,35 +621,35 @@ void DynamicMaze() {
 
 			SetCursor(position.X, position.Y, BLACK, " ");
 
-			COORD kit_pos; // создание пустых координат аптечки
+			COORD kit_pos; // СЃРѕР·РґР°РЅРёРµ РїСѓСЃС‚С‹С… РєРѕРѕСЂРґРёРЅР°С‚ Р°РїС‚РµС‡РєРё
 			kit_pos.X = 0;
 			kit_pos.Y = 0;
-			if (write) // 2 этап процесса возврата аптечки
+			if (write) // 2 СЌС‚Р°Рї РїСЂРѕС†РµСЃСЃР° РІРѕР·РІСЂР°С‚Р° Р°РїС‚РµС‡РєРё
 			{
-				kit_pos.X = position.X; // записывание координат аптечки (до шага)
+				kit_pos.X = position.X; // Р·Р°РїРёСЃС‹РІР°РЅРёРµ РєРѕРѕСЂРґРёРЅР°С‚ Р°РїС‚РµС‡РєРё (РґРѕ С€Р°РіР°)
 				kit_pos.Y = position.Y;
-				write = false; // обнуление переменной после записи координат
+				write = false; // РѕР±РЅСѓР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ РїРѕСЃР»Рµ Р·Р°РїРёСЃРё РєРѕРѕСЂРґРёРЅР°С‚
 			}
 
 			if (code == RIGHT && maze[position.Y][position.X + 1] != WALL) {
-				position.X++; // смещение вправо
+				position.X++; // СЃРјРµС‰РµРЅРёРµ РІРїСЂР°РІРѕ
 			}
 			else if (code == LEFT && maze[position.Y][position.X - 1] != WALL) {
-				position.X--; // смещение влево
+				position.X--; // СЃРјРµС‰РµРЅРёРµ РІР»РµРІРѕ
 			}
 			else if (code == UP && maze[position.Y - 1][position.X] != WALL) {
-				position.Y--; // смещение вверх
+				position.Y--; // СЃРјРµС‰РµРЅРёРµ РІРІРµСЂС…
 			}
 			else if (code == DOWN && maze[position.Y + 1][position.X] != WALL) {
-				position.Y++; // смещение вниз
+				position.Y++; // СЃРјРµС‰РµРЅРёРµ РІРЅРёР·
 			}
 
-			if (kit_pos.X > 0) // если доступны координаты аптечки, возвращаем ее на место (3 этап процесса возврата аптечки)
+			if (kit_pos.X > 0) // РµСЃР»Рё РґРѕСЃС‚СѓРїРЅС‹ РєРѕРѕСЂРґРёРЅР°С‚С‹ Р°РїС‚РµС‡РєРё, РІРѕР·РІСЂР°С‰Р°РµРј РµРµ РЅР° РјРµСЃС‚Рѕ (3 СЌС‚Р°Рї РїСЂРѕС†РµСЃСЃР° РІРѕР·РІСЂР°С‚Р° Р°РїС‚РµС‡РєРё)
 			{
 				SetCursor(kit_pos.X, kit_pos.Y, GREEN, "+");
 			}
 
-			if (maze[position.Y][position.X] == ENEMY) // проверка наличия врага
+			if (maze[position.Y][position.X] == ENEMY) // РїСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ РІСЂР°РіР°
 			{
 				health -= 25;
 				if (health != 0) {
@@ -662,19 +660,18 @@ void DynamicMaze() {
 				SetCursor(health_info.X, health_info.Y, YELLOW, " ");
 				if (health == 0) {
 					CreateThread(0, 0, DeathSound, 0, 0, 0);
-					lose = true;
-					MessageBoxA(0, "Закончилось здоровье!", "Поражение :(", MB_OK);
+					MessageBoxA(0, "Р—Р°РєРѕРЅС‡РёР»РѕСЃСЊ Р·РґРѕСЂРѕРІСЊРµ!", "РџРѕСЂР°Р¶РµРЅРёРµ :(", MB_OK);
 					PEndProgram();
 				}
 			}
 
-			if (maze[position.Y][position.X] == MEDICINE_KIT && health != 100) // использование аптечки
+			if (maze[position.Y][position.X] == MEDICINE_KIT && health != 100) // РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ Р°РїС‚РµС‡РєРё
 			{
 				health += 25;
 				CreateThread(0, 0, UseKitSound, 0, 0, 0);
 				maze[position.Y][position.X] = HALL;
 			}
-			else if (maze[position.Y][position.X] == MEDICINE_KIT && health == 100) // 1 этап процесса возврата аптечки
+			else if (maze[position.Y][position.X] == MEDICINE_KIT && health == 100) // 1 СЌС‚Р°Рї РїСЂРѕС†РµСЃСЃР° РІРѕР·РІСЂР°С‚Р° Р°РїС‚РµС‡РєРё
 			{
 				write = true;
 			}
@@ -682,15 +679,15 @@ void DynamicMaze() {
 			SetCursorChar(position.X, position.Y, PINK, (char)1);
 
 			///////////////////////////////////////////////////////////////////////
-			// проверка на выход из лабиринта
+			// РїСЂРѕРІРµСЂРєР° РЅР° РІС‹С…РѕРґ РёР· Р»Р°Р±РёСЂРёРЅС‚Р°
 
 			if (position.X == width - 1 && position.Y == height - 3) {
-				MessageBoxA(0, "Найден выход из лабиринта!", "ПОБЕДА!", MB_OK);
-				break;
+				MessageBoxA(0, "РќР°Р№РґРµРЅ РІС‹С…РѕРґ РёР· Р»Р°Р±РёСЂРёРЅС‚Р°!", "РџРћР‘Р•Р”Рђ!", MB_OK);
+				PStartProgram();
 			}
 
 			///////////////////////////////////////////////////////////////////////
-			// проверка на подбор монетки
+			// РїСЂРѕРІРµСЂРєР° РЅР° РїРѕРґР±РѕСЂ РјРѕРЅРµС‚РєРё
 
 			if (maze[position.Y][position.X] == COIN) {
 				coins++;
@@ -718,7 +715,7 @@ void DynamicMaze() {
 					}
 				}
 			}
-			//ПЕРЕДВИЖЕНИЕ ВРАГОВ
+			//РџР•Р Р•Р”Р’РР–Р•РќРР• Р’Р РђР“РћР’
 			for (int i = 0; i < enemy_count; i++)
 			{
 				int r = rand() % 100;
@@ -802,5 +799,5 @@ void DynamicMaze() {
 	}
 	delete[] maze;
 
-	EndProgram(lose);
+	PStartProgram();
 }
